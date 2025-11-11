@@ -2,19 +2,10 @@ const fs = require('fs')
 const path = require('path')
 const { execSync } = require('child_process')
 
-const getRepoName = () => {
-  try {
-    return execSync('git remote get-url origin', { encoding: 'utf8' }).split('/').pop().replace('.git', '').trim()
-  } catch {
-    return null
-  }
-}
-
+const basePath = '/'
 const srcDir = 'src'
 const buildDir = 'build'
 const isDev = process.argv.includes('--dev')
-const repoName = getRepoName()
-const basePath = isDev || fs.existsSync('CNAME') ? '/' : `/${repoName}/`
 
 const build = () => {
   fs.rmSync(buildDir, { force: true, recursive: true })

@@ -1,5 +1,5 @@
 {
-  "name": "nothing-static",
+  "name": "pastor.tools",
   "version": "1.0.0",
   "scripts": {
     "build": "node build",
