@@ -5,9 +5,11 @@
 }
 
 #hero h2 {
+  color: var(--color-darkest);
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.2;
+  text-wrap: balance;
 }
 
 #hero p {
@@ -49,10 +51,6 @@
 
 section .layer-inset {
   gap: 1rem;
-}
-
-.layer-inset {
-  line-height: 1.6;
 }
 
 .layer p {

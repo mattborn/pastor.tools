@@ -1,0 +1,158 @@
+{
+  "widgets": [
+    {
+      "id": "quotes",
+      "name": "Key Quotes",
+      "description": "Memorable and impactful quotes from the sermon",
+      "instructions": "Extract 5-8 powerful, memorable quotes from the sermon that capture key theological truths, practical applications, or compelling illustrations. Each quote should be substantial enough to stand alone and inspire reflection.",
+      "schema": {
+        "name": "key_quotes",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "quotes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "description": "The exact quote from the sermon"
+                  },
+                  "context": {
+                    "type": "string",
+                    "description": "Brief context about what the quote addresses"
+                  }
+                },
+                "required": ["text", "context"],
+                "additionalProperties": false
+              },
+              "minItems": 5,
+              "maxItems": 8
+            }
+          },
+          "required": ["quotes"],
+          "additionalProperties": false
+        },
+        "strict": true,
+        "type": "json_schema"
+      }
+    },
+    {
+      "id": "takeaways",
+      "name": "Main Takeaways",
+      "description": "Key points and practical applications",
+      "instructions": "Identify 3-5 main takeaways from the sermon. Each should include the core truth taught and a practical application. Focus on actionable insights that help people apply God's Word to their lives.",
+      "schema": {
+        "name": "takeaways",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "takeaways": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "truth": {
+                    "type": "string",
+                    "description": "The theological or biblical truth being taught"
+                  },
+                  "application": {
+                    "type": "string",
+                    "description": "How to apply this truth in daily life"
+                  }
+                },
+                "required": ["truth", "application"],
+                "additionalProperties": false
+              },
+              "minItems": 3,
+              "maxItems": 5
+            }
+          },
+          "required": ["takeaways"],
+          "additionalProperties": false
+        },
+        "strict": true,
+        "type": "json_schema"
+      }
+    },
+    {
+      "id": "social",
+      "name": "Social Media Posts",
+      "description": "Shareable content for social media",
+      "instructions": "Create 4-6 social media posts that capture the sermon's key insights. Each post should be engaging, shareable, and inspire spiritual reflection. Include variety: some quotes, some questions, some applications.",
+      "schema": {
+        "name": "social_posts",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "posts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "description": "The social media post text (under 280 characters)"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": ["quote", "question", "application", "insight"],
+                    "description": "The type of post"
+                  }
+                },
+                "required": ["text", "type"],
+                "additionalProperties": false
+              },
+              "minItems": 4,
+              "maxItems": 6
+            }
+          },
+          "required": ["posts"],
+          "additionalProperties": false
+        },
+        "strict": true,
+        "type": "json_schema"
+      }
+    },
+    {
+      "id": "discussion",
+      "name": "Discussion Questions",
+      "description": "Questions for small groups or personal reflection",
+      "instructions": "Create 5-7 thoughtful discussion questions based on the sermon. Include a mix of: understanding questions (what did the passage/sermon say?), application questions (how does this apply to us?), and reflection questions (how does this challenge or encourage you?). Questions should promote deep conversation and spiritual growth.",
+      "schema": {
+        "name": "discussion_questions",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "questions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "question": {
+                    "type": "string",
+                    "description": "The discussion question"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": ["understanding", "application", "reflection"],
+                    "description": "The type of question"
+                  }
+                },
+                "required": ["question", "type"],
+                "additionalProperties": false
+              },
+              "minItems": 5,
+              "maxItems": 7
+            }
+          },
+          "required": ["questions"],
+          "additionalProperties": false
+        },
+        "strict": true,
+        "type": "json_schema"
+      }
+    }
+  ]
+}

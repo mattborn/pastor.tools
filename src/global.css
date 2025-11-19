@@ -1,12 +1,45 @@
+:root {
+  --color-accent: #6b4bff;
+}
+
 .logo {
+  align-items: center;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.logo-img {
+  background: var(--color-lighter);
+  border-radius: 0.5rem;
+  height: 3rem;
+  padding: 0.5rem;
+}
+
+.logo-text {
   font-family: 'Plus Jakarta Sans', system-ui;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.04em;
+}
+
+.logo-text .muted {
+  color: var(--color-half);
 }
 
 header .layer-inset {
   align-items: center;
   display: flex;
   justify-content: space-between;
+}
+
+#footer-logo {
+  width: 100%;
+}
+
+#footer-logo text {
+  fill: currentColor;
+  font:
+    700 9rem 'Plus Jakarta Sans',
+    system-ui;
+  letter-spacing: -0.04em;
 }

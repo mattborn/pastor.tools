@@ -1,0 +1,95 @@
+<div id="app">
+  <header id="top">
+    <div class="selector">
+      <i class="fa-solid fa-circle-c"></i>
+      <span>Church</span>
+      <i class="fa-regular fa-angles-up-down"></i>
+    </div>
+    <span class="divider">/</span>
+    <div class="selector">
+      <span>Free trial</span>
+      <i class="fa-regular fa-angles-up-down"></i>
+    </div>
+    <div class="fill"></div>
+    <a data-page="dashboard">Dashboard</a>
+    <a class="upgrade" data-page="upgrade"><i class="fa-solid fa-rectangle-pro"></i><span>Upgrade</span></a>
+    <a id="account-btn" data-page="account">
+      <i class="fa-regular fa-user"></i>
+    </a>
+  </header>
+  <div id="bottom">
+    <aside id="side">
+      <nav id="side-nav">
+        <div class="nav-section">
+          <div>Create</div>
+          <a class="nav-button active" data-page="sermons"
+            ><i class="fa-regular fa-screen-users"></i><span>Sermons</span></a
+          >
+          <a class="nav-button" data-page="utilities"><i class="fa-solid fa-bat"></i><span>Utility Belt</span></a>
+          <a class="nav-button" data-page="widgets"
+            ><i class="fa-regular fa-tachograph-digital"></i><span>Widgets</span></a
+          >
+        </div>
+        <div class="nav-section">
+          <div>Manage</div>
+          <a class="nav-button" data-page="usage"><i class="fa-regular fa-chart-simple"></i><span>Usage</span></a>
+          <a class="nav-button" data-page="team"><i class="fa-regular fa-users"></i><span>Team</span></a>
+        </div>
+        <div class="nav-section">
+          <div>Goodies</div>
+          <a class="nav-button" data-page="download"><i class="fa-brands fa-apple"></i><span>Download</span></a>
+          <a class="nav-button upgrade" data-page="upgrade"
+            ><i class="fa-solid fa-rectangle-pro"></i><span>Upgrade</span></a
+          >
+        </div>
+      </nav>
+      <a class="nav-button" id="sidebar-toggle"><i class="fa-regular fa-sidebar"></i></a>
+    </aside>
+    <main id="main">
+      <section class="page" id="dashboard">
+        <h1>Dashboard</h1>
+      </section>
+      <section class="page active" id="sermons">
+        <h1>Sermons</h1>
+        <div id="sermon-start">
+          <h2>Start generating content</h2>
+          <div class="options">
+            <div class="option" id="paste-option">
+              <i class="fa-regular fa-paste"></i>
+              <span>Paste sermon transcript</span>
+            </div>
+            <div class="option" id="import-youtube">
+              <i class="fa-brands fa-youtube"></i>
+              <span>Import from YouTube</span>
+              <span class="badge">Pro</span>
+            </div>
+          </div>
+        </div>
+        <div id="sermon-panels">
+          <div class="sermon-card" id="sermon-transcript"></div>
+        </div>
+      </section>
+      <section class="page" id="utilities">
+        <h1>Utilities</h1>
+      </section>
+      <section class="page" id="download">
+        <h1>Download for Mac</h1>
+      </section>
+      <section class="page" id="widgets">
+        <h1>Widgets</h1>
+      </section>
+      <section class="page" id="usage">
+        <h1>Usage</h1>
+      </section>
+      <section class="page" id="team">
+        <h1>Team</h1>
+      </section>
+      <section class="page" id="account">
+        <h1>Account</h1>
+      </section>
+      <section class="page" id="upgrade">
+        <h1>Upgrade to Pro</h1>
+      </section>
+    </main>
+  </div>
+</div>

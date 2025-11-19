@@ -1,0 +1,32 @@
+#hero {
+  display: flex;
+  min-height: 100vh;
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+#hero .inset {
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  border-radius: 2rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+  padding: 6rem clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+}
+
+#hero h1 {
+  color: var(--color-darkest);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+#hero .copy-big {
+  font-size: 1.25rem;
+}

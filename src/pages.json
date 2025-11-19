@@ -1,8 +1,14 @@
 {
   "index": {
-    "description": "Transform years of sermons into a powerful resource for ministry",
-    "og-image": "/favicon.svg",
+    "description": "Instantly transform your Sunday message into takeaways, reminders, and spiritual uplifts that keep your community connected all week long.",
+    "og-image": "/apple-touch-icon.png",
     "og-url": "https://pastor.tools",
-    "title": "Pastor.tools - Your church's voice, organized and accessible"
+    "title": "Pastor.tools - Turn every sermon into a week of engagement"
+  },
+  "voice": {
+    "description": "Transform years of sermons into a powerful resource for ministry",
+    "og-image": "/apple-touch-icon.png",
+    "og-url": "https://pastor.tools/voice",
+    "title": "Voice - Pastor.tools"
   }
 }
