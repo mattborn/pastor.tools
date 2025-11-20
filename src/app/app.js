@@ -472,6 +472,42 @@ const selectAsset = assetId => {
   })
 }
 
+const handlePasteNotes = async () => {
+  const text = (await navigator.clipboard.readText()).trim()
+  const wordCount = text.split(/\s+/).filter(Boolean).length
+
+  if (wordCount < 50) {
+    alert('Please copy your sermon notes into your clipboard.')
+    return
+  }
+
+  // For notes, we'll treat the entire text as the content (less structured than transcript)
+  const transcript = (text.match(/[^.!?]+[.!?]*/g) || []).map(s => s.trim()).filter(Boolean)
+  if (!transcript.length) {
+    // If no sentences found, treat the whole thing as one entry
+    const entry = { started: Date.now(), transcript: [text], assets: {} }
+    const store = getStore()
+    store.push(entry)
+    localStorage.setItem(pastorToolsKey, JSON.stringify(store))
+
+    const entryIndex = store.length - 1
+    currentSermonIndex = entryIndex
+    selectSermon(entryIndex)
+    processAllAssets(entryIndex, entry)
+    return
+  }
+
+  const entry = { started: Date.now(), transcript, assets: {} }
+  const store = getStore()
+  store.push(entry)
+  localStorage.setItem(pastorToolsKey, JSON.stringify(store))
+
+  const entryIndex = store.length - 1
+  currentSermonIndex = entryIndex
+  selectSermon(entryIndex)
+  processAllAssets(entryIndex, entry)
+}
+
 const handlePasteTranscript = async () => {
   const text = (await navigator.clipboard.readText()).trim()
   const wordCount = text.split(/\s+/).filter(Boolean).length
@@ -549,6 +585,7 @@ document.addEventListener('click', async e => {
     settingsSection.classList.toggle('collapsed')
   }
 
+  if (e.target.closest('#paste-notes-option')) await handlePasteNotes()
   if (e.target.closest('#paste-option')) await handlePasteTranscript()
 
   if (e.target.closest('#new-sermon-btn')) {
