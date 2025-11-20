@@ -21,26 +21,34 @@
     <aside id="side">
       <nav id="side-nav">
         <div class="nav-section">
-          <div>Create</div>
-          <a class="nav-button active" data-page="sermons"
-            ><i class="fa-regular fa-screen-users"></i><span>Sermons</span></a
-          >
-          <a class="nav-button" data-page="utilities"><i class="fa-solid fa-bat"></i><span>Utility Belt</span></a>
-          <a class="nav-button" data-page="widgets"
-            ><i class="fa-regular fa-tachograph-digital"></i><span>Widgets</span></a
-          >
+          <div class="nav-section-header-with-action">
+            <span>Create</span>
+            <button id="new-sermon-btn" class="nav-action-btn-simple" title="New Sermon">
+              <i class="fa-regular fa-plus"></i>
+            </button>
+          </div>
         </div>
-        <div class="nav-section">
-          <div>Manage</div>
-          <a class="nav-button" data-page="usage"><i class="fa-regular fa-chart-simple"></i><span>Usage</span></a>
-          <a class="nav-button" data-page="team"><i class="fa-regular fa-users"></i><span>Team</span></a>
+        <div class="nav-section collapsed" id="sermons-section">
+          <div class="nav-section-header" id="sermons-toggle">
+            <span>Sermons</span>
+            <i class="fa-regular fa-chevron-right"></i>
+          </div>
+          <div class="nav-section-content" id="sermons-list-content"></div>
         </div>
-        <div class="nav-section">
-          <div>Goodies</div>
-          <a class="nav-button" data-page="download"><i class="fa-brands fa-apple"></i><span>Download</span></a>
-          <a class="nav-button upgrade" data-page="upgrade"
-            ><i class="fa-solid fa-rectangle-pro"></i><span>Upgrade</span></a
-          >
+        <div class="nav-section collapsed" id="settings-section">
+          <div class="nav-section-header" id="settings-toggle">
+            <span>Settings</span>
+            <i class="fa-regular fa-chevron-right"></i>
+          </div>
+          <div class="nav-section-content">
+            <a class="nav-button" data-page="utilities"><i class="fa-solid fa-bat"></i><span>Utility Belt</span></a>
+            <a class="nav-button" data-page="widgets"
+              ><i class="fa-regular fa-tachograph-digital"></i><span>Widgets</span></a
+            >
+            <a class="nav-button" data-page="usage"><i class="fa-regular fa-chart-simple"></i><span>Usage</span></a>
+            <a class="nav-button" data-page="team"><i class="fa-regular fa-users"></i><span>Team</span></a>
+            <a class="nav-button" data-page="download"><i class="fa-brands fa-apple"></i><span>Download</span></a>
+          </div>
         </div>
       </nav>
       <a class="nav-button" id="sidebar-toggle"><i class="fa-regular fa-sidebar"></i></a>
@@ -50,9 +58,9 @@
         <h1>Dashboard</h1>
       </section>
       <section class="page active" id="sermons">
-        <h1>Sermons</h1>
-        <div id="sermon-start">
-          <h2>Start generating content</h2>
+        <div id="sermon-start" class="sermon-start-view">
+          <h1>Start generating content</h1>
+          <p class="sermon-start-subtitle">Paste your sermon transcript to create assets</p>
           <div class="options">
             <div class="option" id="paste-option">
               <i class="fa-regular fa-paste"></i>
@@ -65,8 +73,18 @@
             </div>
           </div>
         </div>
-        <div id="sermon-panels">
-          <div class="sermon-card" id="sermon-transcript"></div>
+        <div id="sermon-workspace" class="sermon-workspace" style="display: none">
+          <div id="sermon-content" class="sermon-content">
+            <div id="asset-nav" class="asset-nav">
+              <div id="asset-nav-list" class="asset-nav-list"></div>
+            </div>
+            <div id="asset-viewer" class="asset-viewer">
+              <div id="asset-viewer-placeholder" class="asset-viewer-placeholder">
+                <i class="fa-regular fa-file-lines"></i>
+                <p>Select an asset to view</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <section class="page" id="utilities">

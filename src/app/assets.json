@@ -1,0 +1,223 @@
+{
+  "assets": [
+    {
+      "id": "website",
+      "name": "Website Recap",
+      "icon": "fa-regular fa-calendar",
+      "description": "A formatted summary for your church website",
+      "instructions": "Create a website recap from this sermon. Include: 1) A compelling title (3-5 words), 2) A 2-3 sentence summary paragraph that captures the main message, 3) 3-5 key takeaways as bullet points that are clear and actionable, 4) Scripture references mentioned in the sermon (format as 'Book Chapter:Verse'), 5) A 'Next Steps' section with one practical application for the week.",
+      "schema": {
+        "name": "website_recap",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "Compelling sermon title (3-5 words)"
+            },
+            "summary": {
+              "type": "string",
+              "description": "2-3 sentence summary of the main message"
+            },
+            "keyPoints": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 3,
+              "maxItems": 5,
+              "description": "3-5 key takeaways as clear, actionable points"
+            },
+            "scriptures": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Scripture references mentioned (format: 'Book Chapter:Verse')"
+            },
+            "nextSteps": {
+              "type": "string",
+              "description": "One practical application for the week"
+            }
+          },
+          "required": ["title", "summary", "keyPoints", "scriptures", "nextSteps"],
+          "additionalProperties": false
+        },
+        "strict": true,
+        "type": "json_schema"
+      }
+    },
+    {
+      "id": "smallGroup",
+      "name": "Small Group Guide",
+      "icon": "fa-regular fa-users",
+      "description": "Discussion guide for small groups",
+      "instructions": "Create a small group discussion guide. Include: 1) An icebreaker question related to the sermon topic, 2) The main scripture passage to read together, 3) 5-7 discussion questions that mix understanding (what did it say?), application (how does this apply?), and reflection (how does this challenge you?), 4) 2-3 application questions for personal reflection, 5) A brief leader tip for facilitating the discussion.",
+      "schema": {
+        "name": "small_group_guide",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "icebreaker": {
+              "type": "string",
+              "description": "An icebreaker question related to the sermon topic"
+            },
+            "passage": {
+              "type": "string",
+              "description": "Main scripture passage to read together"
+            },
+            "discussionQuestions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 5,
+              "maxItems": 7,
+              "description": "Discussion questions mixing understanding, application, and reflection"
+            },
+            "applicationQuestions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 2,
+              "maxItems": 3,
+              "description": "Questions for personal reflection and application"
+            },
+            "leaderTips": {
+              "type": "string",
+              "description": "Brief tip for facilitating the discussion"
+            }
+          },
+          "required": ["icebreaker", "passage", "discussionQuestions", "applicationQuestions", "leaderTips"],
+          "additionalProperties": false
+        },
+        "strict": true,
+        "type": "json_schema"
+      }
+    },
+    {
+      "id": "email",
+      "name": "Weekly Email",
+      "icon": "fa-regular fa-envelope",
+      "description": "Email summary for your congregation",
+      "instructions": "Create a weekly email summary. Include: 1) A warm greeting (e.g., 'Hi Church Family,'), 2) A 2-3 sentence recap of Sunday's message that's engaging and accessible, 3) A 'This Week at Church' section with 2-3 upcoming events (format as list items), 4) A call-to-action to watch/listen to the full message.",
+      "schema": {
+        "name": "weekly_email",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "greeting": {
+              "type": "string",
+              "description": "Warm greeting (e.g., 'Hi Church Family,')"
+            },
+            "recap": {
+              "type": "string",
+              "description": "2-3 sentence recap of Sunday's message"
+            },
+            "thisWeek": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 2,
+              "maxItems": 3,
+              "description": "Upcoming events this week (format as list items)"
+            },
+            "cta": {
+              "type": "string",
+              "description": "Call-to-action to watch/listen to the full message"
+            }
+          },
+          "required": ["greeting", "recap", "thisWeek", "cta"],
+          "additionalProperties": false
+        },
+        "strict": true,
+        "type": "json_schema"
+      }
+    },
+    {
+      "id": "leaderNotes",
+      "name": "Leader Notes",
+      "icon": "fa-regular fa-book",
+      "description": "Theological insights and teaching notes",
+      "instructions": "Create leader notes with theological insights. Include: 1) A theological insight explaining a key concept, word study, or biblical context (2-3 sentences), 2) 2-3 cross-reference scriptures that connect to this message (format as 'Book Chapter:Verse - Brief description'), 3) A key emphasis point for leaders to highlight when teaching.",
+      "schema": {
+        "name": "leader_notes",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "theologicalInsights": {
+              "type": "string",
+              "description": "Theological insight explaining a key concept, word study, or biblical context (2-3 sentences)"
+            },
+            "followUpScriptures": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 2,
+              "maxItems": 3,
+              "description": "Cross-reference scriptures (format: 'Book Chapter:Verse - Brief description')"
+            },
+            "emphasize": {
+              "type": "string",
+              "description": "Key emphasis point for leaders to highlight"
+            }
+          },
+          "required": ["theologicalInsights", "followUpScriptures", "emphasize"],
+          "additionalProperties": false
+        },
+        "strict": true,
+        "type": "json_schema"
+      }
+    },
+    {
+      "id": "devotional",
+      "name": "Devotional",
+      "icon": "fa-regular fa-heart",
+      "description": "Multi-day devotional series",
+      "instructions": "Create a 3-day devotional based on this sermon. Each day should include: 1) A day label (e.g., 'Day 1: The Perspective Shift'), 2) A 2-3 sentence reflection on that day's theme, 3) A reflection question for personal application. The three days should build on each other and connect to the sermon's main themes.",
+      "schema": {
+        "name": "devotional",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "description": "Title for the devotional series (e.g., '3-Day Devotional: Walking Through Fire')"
+            },
+            "days": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "day": {
+                    "type": "string",
+                    "description": "Day label (e.g., 'Day 1: The Perspective Shift')"
+                  },
+                  "content": {
+                    "type": "string",
+                    "description": "2-3 sentence reflection on that day's theme"
+                  },
+                  "question": {
+                    "type": "string",
+                    "description": "Reflection question for personal application"
+                  }
+                },
+                "required": ["day", "content", "question"],
+                "additionalProperties": false
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "required": ["title", "days"],
+          "additionalProperties": false
+        },
+        "strict": true,
+        "type": "json_schema"
+      }
+    }
+  ]
+}

@@ -5,6 +5,16 @@ const path = require('path')
 const os = require('os')
 
 const getPort = () => {
+  // Check for PORT environment variable or --port argument first
+  const portArgIndex = process.argv.indexOf('--port')
+  if (portArgIndex !== -1 && process.argv[portArgIndex + 1]) {
+    return parseInt(process.argv[portArgIndex + 1], 10)
+  }
+
+  if (process.env.PORT) {
+    return parseInt(process.env.PORT, 10)
+  }
+
   const portsPath = path.join(os.homedir(), 'Code', 'ports.csv')
 
   if (!fs.existsSync(portsPath)) {
@@ -29,7 +39,7 @@ const getPort = () => {
   return null
 }
 
-const port = getPort()
+const port = getPort() || 3005
 const serveArgs = port ? ['serve', 'build', '-l', port.toString()] : ['serve', 'build']
 
 if (port) console.log(`🚀 Starting dev server on port ${port}...\n`)
