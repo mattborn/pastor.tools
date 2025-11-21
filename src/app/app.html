@@ -11,49 +11,102 @@
       <i class="fa-regular fa-angles-up-down"></i>
     </div>
     <div class="fill"></div>
-    <a data-page="dashboard">Dashboard</a>
-    <a class="upgrade" data-page="upgrade"><i class="fa-solid fa-rectangle-pro"></i><span>Upgrade</span></a>
-    <a id="account-btn" data-page="account">
-      <i class="fa-regular fa-user"></i>
-    </a>
+    <div id="user-info" class="user-info" style="display: none">
+      <span id="user-email" class="user-email"></span>
+      <a id="account-btn" data-page="account" class="account-link">
+        <i class="fa-regular fa-user"></i>
+      </a>
+    </div>
   </header>
   <div id="bottom">
     <aside id="side">
       <nav id="side-nav">
-        <div class="nav-section">
-          <div class="nav-section-header-with-action">
-            <span>Create</span>
-            <button id="new-sermon-btn" class="nav-action-btn-simple" title="New Sermon">
-              <i class="fa-regular fa-plus"></i>
-            </button>
-          </div>
-        </div>
         <div class="nav-section collapsed" id="sermons-section">
           <div class="nav-section-header" id="sermons-toggle">
+            <i class="fa-regular fa-book"></i>
             <span>Sermons</span>
             <i class="fa-regular fa-chevron-right"></i>
           </div>
-          <div class="nav-section-content" id="sermons-list-content"></div>
+          <div class="nav-section-content">
+            <button id="new-sermon-btn" class="nav-button new-sermon-nav-btn">
+              <i class="fa-regular fa-plus"></i>
+              <span>Upload sermon</span>
+            </button>
+            <div id="sermons-list-content"></div>
+          </div>
         </div>
         <div class="nav-section collapsed" id="settings-section">
           <div class="nav-section-header" id="settings-toggle">
+            <i class="fa-regular fa-gear"></i>
             <span>Settings</span>
             <i class="fa-regular fa-chevron-right"></i>
           </div>
           <div class="nav-section-content">
+            <a class="nav-button" data-page="dashboard"
+              ><i class="fa-regular fa-chart-line"></i><span>Dashboard</span></a
+            >
             <a class="nav-button" data-page="utilities"><i class="fa-solid fa-bat"></i><span>Utility Belt</span></a>
             <a class="nav-button" data-page="widgets"
               ><i class="fa-regular fa-tachograph-digital"></i><span>Widgets</span></a
             >
             <a class="nav-button" data-page="usage"><i class="fa-regular fa-chart-simple"></i><span>Usage</span></a>
-            <a class="nav-button" data-page="team"><i class="fa-regular fa-users"></i><span>Team</span></a>
             <a class="nav-button" data-page="download"><i class="fa-brands fa-apple"></i><span>Download</span></a>
           </div>
+        </div>
+        <div class="nav-section">
+          <a class="nav-button" data-page="account"><i class="fa-regular fa-user"></i><span>Account</span></a>
+          <a class="nav-button upgrade-nav-btn" data-page="upgrade">
+            <i class="fa-solid fa-rectangle-pro"></i>
+            <span>Upgrade</span>
+          </a>
         </div>
       </nav>
       <a class="nav-button" id="sidebar-toggle"><i class="fa-regular fa-sidebar"></i></a>
     </aside>
     <main id="main">
+      <section class="page" id="login" style="display: none">
+        <div class="login-view">
+          <h1>Welcome to Pastor.tools</h1>
+          <p class="login-subtitle">Sign in with a magic link sent to your email</p>
+          <form id="login-form" class="login-form">
+            <input type="email" id="login-email" placeholder="Enter your email" required class="login-input" />
+            <button type="submit" class="login-button">
+              <i class="fa-regular fa-envelope"></i>
+              Send magic link
+            </button>
+          </form>
+          <div id="login-message" class="login-message" style="display: none"></div>
+        </div>
+      </section>
+      <section class="page" id="org-select" style="display: none">
+        <div class="org-select-view">
+          <h1>Select or create an organization</h1>
+          <div class="org-options">
+            <div class="org-option">
+              <h3>Create new organization</h3>
+              <form id="create-org-form" class="org-form">
+                <input type="text" id="create-org-name" placeholder="Organization name" required class="org-input" />
+                <button type="submit" class="org-button">
+                  <i class="fa-regular fa-plus"></i>
+                  Create
+                </button>
+              </form>
+            </div>
+            <div class="org-divider">or</div>
+            <div class="org-option">
+              <h3>Join existing organization</h3>
+              <form id="join-org-form" class="org-form">
+                <input type="text" id="join-org-slug" placeholder="Organization code" required class="org-input" />
+                <button type="submit" class="org-button">
+                  <i class="fa-regular fa-arrow-right"></i>
+                  Join
+                </button>
+              </form>
+            </div>
+          </div>
+          <div id="org-message" class="org-message" style="display: none"></div>
+        </div>
+      </section>
       <section class="page" id="dashboard">
         <h1>Dashboard</h1>
       </section>
@@ -62,11 +115,11 @@
           <h1>Start generating content</h1>
           <p class="sermon-start-subtitle">Paste your sermon notes or transcript to create assets</p>
           <div class="options">
-            <div class="option" id="paste-notes-option">
+            <div class="option" id="paste-notes-option" data-type="notes">
               <i class="fa-regular fa-file-lines"></i>
               <span>Paste sermon notes</span>
             </div>
-            <div class="option" id="paste-option">
+            <div class="option" id="paste-option" data-type="transcript">
               <i class="fa-regular fa-paste"></i>
               <span>Paste sermon transcript</span>
             </div>
@@ -76,16 +129,38 @@
               <span class="badge">Pro</span>
             </div>
           </div>
+          <div id="paste-input-container" class="paste-input-container" style="display: none">
+            <div class="paste-input-header">
+              <h3 id="paste-input-title">Paste your content</h3>
+              <button id="paste-input-cancel" class="paste-input-cancel">
+                <i class="fa-regular fa-xmark"></i>
+              </button>
+            </div>
+            <textarea
+              id="paste-input-textarea"
+              class="paste-input-textarea"
+              placeholder="Paste your sermon notes or transcript here..."
+              rows="12"
+            ></textarea>
+            <div class="paste-input-actions">
+              <button id="paste-input-submit" class="paste-input-submit">
+                <i class="fa-regular fa-arrow-right"></i>
+                Generate assets
+              </button>
+            </div>
+          </div>
         </div>
         <div id="sermon-workspace" class="sermon-workspace" style="display: none">
           <div id="sermon-content" class="sermon-content">
-            <div id="asset-nav" class="asset-nav">
-              <div id="asset-nav-list" class="asset-nav-list"></div>
-            </div>
             <div id="asset-viewer" class="asset-viewer">
-              <div id="asset-viewer-placeholder" class="asset-viewer-placeholder">
-                <i class="fa-regular fa-file-lines"></i>
-                <p>Select an asset to view</p>
+              <div id="asset-nav" class="asset-nav">
+                <div id="asset-nav-list" class="asset-nav-list"></div>
+              </div>
+              <div id="asset-content-container" class="asset-content-container">
+                <div id="asset-viewer-placeholder" class="asset-viewer-placeholder">
+                  <i class="fa-regular fa-file-lines"></i>
+                  <p>Select an asset to view</p>
+                </div>
               </div>
             </div>
           </div>
@@ -103,15 +178,159 @@
       <section class="page" id="usage">
         <h1>Usage</h1>
       </section>
-      <section class="page" id="team">
-        <h1>Team</h1>
-      </section>
       <section class="page" id="account">
-        <h1>Account</h1>
+        <div class="account-view">
+          <h1>Account</h1>
+          <div class="account-info">
+            <div class="account-section">
+              <h2>Signed in as</h2>
+              <div class="account-email" id="account-email-display"></div>
+            </div>
+            <div class="account-section">
+              <h2>Organization</h2>
+              <div class="account-org" id="account-org-display"></div>
+            </div>
+            <div class="account-actions">
+              <button id="logout-btn" class="logout-button">
+                <i class="fa-regular fa-sign-out"></i>
+                Sign out
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
       <section class="page" id="upgrade">
-        <h1>Upgrade to Pro</h1>
+        <div class="pricing-view">
+          <div class="pricing-header">
+            <h1>Choose Your Plan</h1>
+            <p class="pricing-subtitle">Transform every sermon into engaging content for your congregation</p>
+          </div>
+          <div class="pricing-plans">
+            <div class="pricing-plan">
+              <div class="plan-header">
+                <h2>Free</h2>
+                <div class="plan-price">
+                  <span class="price-amount">$0</span>
+                  <span class="price-period">/month</span>
+                </div>
+                <p class="plan-description">Perfect for getting started</p>
+              </div>
+              <div class="plan-features">
+                <ul>
+                  <li><i class="fa-regular fa-check"></i> Paste sermon notes or transcript</li>
+                  <li><i class="fa-regular fa-check"></i> Generate 5 core assets</li>
+                  <li><i class="fa-regular fa-check"></i> Website Recap</li>
+                  <li><i class="fa-regular fa-check"></i> Small Group Guide</li>
+                  <li><i class="fa-regular fa-check"></i> Weekly Email</li>
+                  <li><i class="fa-regular fa-check"></i> Leader Notes</li>
+                  <li><i class="fa-regular fa-check"></i> Devotional</li>
+                  <li><i class="fa-regular fa-check"></i> Create custom assets</li>
+                  <li><i class="fa-regular fa-check"></i> Edit, copy, and download assets</li>
+                </ul>
+              </div>
+              <div class="plan-cta">
+                <button class="plan-button current-plan" disabled>Current Plan</button>
+              </div>
+            </div>
+            <div class="pricing-plan featured">
+              <div class="plan-badge">Most Popular</div>
+              <div class="plan-header">
+                <h2>Pro</h2>
+                <div class="plan-price">
+                  <span class="price-amount">$25</span>
+                  <span class="price-period">/month</span>
+                </div>
+                <p class="plan-description">Everything in Free, plus:</p>
+              </div>
+              <div class="plan-features">
+                <ul>
+                  <li><i class="fa-regular fa-check"></i> Everything in Free</li>
+                  <li><i class="fa-regular fa-check"></i> Import from YouTube</li>
+                  <li><i class="fa-regular fa-check"></i> Automatic transcript extraction</li>
+                  <li><i class="fa-regular fa-check"></i> Unlimited sermon processing</li>
+                  <li><i class="fa-regular fa-check"></i> Priority support</li>
+                  <li><i class="fa-regular fa-check"></i> Advanced customization options</li>
+                  <li><i class="fa-regular fa-check"></i> Export to multiple formats</li>
+                  <li><i class="fa-regular fa-check"></i> Team collaboration features</li>
+                </ul>
+              </div>
+              <div class="plan-cta">
+                <button class="plan-button primary" id="upgrade-to-pro-btn">
+                  <i class="fa-solid fa-rectangle-pro"></i>
+                  Upgrade to Pro
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="pricing-footer">
+            <p>All plans include secure cloud storage and regular updates. Cancel anytime.</p>
+          </div>
+        </div>
       </section>
     </main>
   </div>
+
+  <!-- Create Asset Modal -->
+  <div id="create-asset-modal" class="modal-overlay" style="display: none">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Create Custom Asset</h2>
+        <button id="close-asset-modal" class="modal-close">
+          <i class="fa-regular fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="create-asset-form">
+          <div class="form-group">
+            <label for="asset-name">Asset Name</label>
+            <input type="text" id="asset-name" class="form-input" placeholder="e.g., Bulletin, Newsletter" required />
+          </div>
+          <div class="form-group">
+            <label for="asset-icon">Icon</label>
+            <select id="asset-icon" class="form-input form-select" required>
+              <option value="">Choose an icon...</option>
+              <option value="fa-regular fa-file-lines">📄 Document</option>
+              <option value="fa-regular fa-calendar">📅 Calendar</option>
+              <option value="fa-regular fa-users">👥 People/Group</option>
+              <option value="fa-regular fa-book">📖 Book</option>
+              <option value="fa-regular fa-heart">❤️ Heart/Devotional</option>
+              <option value="fa-regular fa-envelope">✉️ Email</option>
+              <option value="fa-regular fa-lightbulb">💡 Idea</option>
+              <option value="fa-regular fa-chart-line">📊 Chart/Analytics</option>
+              <option value="fa-regular fa-note-sticky">📝 Note</option>
+              <option value="fa-regular fa-clipboard">📋 Clipboard</option>
+              <option value="fa-regular fa-list-check">✅ Checklist</option>
+              <option value="fa-regular fa-bullhorn">📢 Announcement</option>
+              <option value="fa-regular fa-handshake">🤝 Connection</option>
+              <option value="fa-regular fa-pray">🙏 Prayer</option>
+              <option value="fa-regular fa-church">⛪ Church</option>
+              <option value="fa-regular fa-star">⭐ Star/Featured</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="asset-template">Template or Document</label>
+            <textarea
+              id="asset-template"
+              class="form-textarea"
+              rows="10"
+              placeholder="Paste your document or template here. Headers will be extracted automatically."
+            ></textarea>
+            <small class="form-hint">Paste a document to extract structure, or define your template structure</small>
+          </div>
+          <div class="form-actions">
+            <button type="button" id="extract-structure-btn" class="btn-secondary">
+              <i class="fa-regular fa-magic"></i>
+              Extract Structure
+            </button>
+            <button type="submit" class="btn-primary">
+              <i class="fa-regular fa-check"></i>
+              Create Asset
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
